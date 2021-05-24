@@ -1,0 +1,15 @@
+---
+- hosts: localhost
+  gather_facts: false
+  tasks:
+        - name: un-comment or add pam_access in /etc/pam.d files
+          lineinfile:
+            path   : "{{ item }}"
+            regexp : "#.*account.*required.*pam_access.so"
+            line   : "account   required   pam_access.so"
+            insertafter : ".*include.*common-auth"
+            state  : present
+          with_items:
+            - /etc/pam.d/login
+	
+          
