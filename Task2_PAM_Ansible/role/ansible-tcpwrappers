@@ -1,0 +1,11 @@
+tcpwrappers_allow:
+ - daemon: 'sshd'
+   clients:
+    - '192.168.0.6'
+    - 'localhost'
+tcpwrappers_allow_all_connections: false
+tcpwrappers_deny:
+ - daemon: 'sshd'
+   clients:
+    - 'ALL'
+tcpwrappers_deny_all_connections: true
